@@ -1,16 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player_shoot",
+  "%Name":"obj_powerup_01",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_player_shoot",
+  "name":"obj_powerup_01",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Objects/Gameplay/Player.yy",
+    "name":"PowerUps",
+    "path":"folders/Objects/Gameplay/PowerUps.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_player_shoot",
-    "path":"sprites/spr_player_shoot/spr_player_shoot.yy",
+    "name":"spr_powerup_01",
+    "path":"sprites/spr_powerup_01/spr_powerup_01.yy",
   },
   "spriteMaskId":null,
   "visible":true,

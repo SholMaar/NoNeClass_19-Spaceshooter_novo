@@ -1,0 +1,1 @@
+draw_text(20, 20, select_shoot);

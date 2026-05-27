@@ -1,0 +1,1 @@
+player_shoot_control(); // controles do tiro
