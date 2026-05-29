@@ -1,4 +1,4 @@
 select_shoot--;
 
-current_player_life--;
+player_lose_life();
 current_player_shield--;

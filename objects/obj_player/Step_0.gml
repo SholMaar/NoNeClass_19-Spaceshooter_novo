@@ -10,5 +10,6 @@ player_control();
 
 
 #region debug
-	show_debug_message(alarm_player_shoot);
+//	show_debug_message(alarm_player_shoot);
+show_debug_message(x)
 #endregion

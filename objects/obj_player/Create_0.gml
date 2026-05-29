@@ -1,10 +1,12 @@
 #region variaveis
 	// velocidades
 	vel_player				= 4; // velocidade movimento
-	time_player_shooting	= game_get_speed(gamespeed_fps) /5; // intervalo de disparo
 	
 	// controles
 	select_shoot			= 01;
+	active_shield			= false;
+	damage_cooldown			= false;
+	
 	// vidas do jogador
 	max_player_life			= 3;
 	current_player_life		= max_player_life;
@@ -14,8 +16,12 @@
 #endregion
 
 #region alarmes
-// alarme para intervalos no disparo
-alarm_player_shoot = 0;
+	// alarme para intervalos no disparo
+	time_player_shooting	= game_get_speed(gamespeed_fps) /5; // intervalo de disparo
+	alarm_player_shoot		= 0;
+	// alarme para cooldown
+	time_damage_cooldown	= game_get_speed(gamespeed_fps) *3;
+	alarm_damage_cooldown	= time_damage_cooldown;
 #endregion
 
 #region métodos
@@ -86,6 +92,48 @@ alarm_player_shoot = 0;
 				// resetando o alarme de disparo
 				alarm_player_shoot = time_player_shooting;
 		#endregion		
+		
+		#region escudo
+			// tecla de criar escudo
+			var _activate_shield = keyboard_check_released(ord("E")) || keyboard_check_released(vk_control);
+			// criando escudo somente se eu tenho escudos para criar
+			if (_activate_shield && current_player_shield > 0 && !active_shield)
+			{
+				// criando escudo
+				if (object_exists(obj_player_shield)) // somente se esse objeto existe
+				{
+					// falando que meu escudo está ativo
+					active_shield = true;
+					// gastando meu escudo
+					current_player_shield --;
+					// garantindo que o joagdor não vai receber dano nenhum
+					damage_cooldown = true; // isso impede ele de tomar qualquer dano
+					// criando escudo
+					instance_create_layer(x, y, "player_shield", obj_player_shield);
+				}
+			}
+			
+			// verificando se o escuto esta no jogo para saber se ele está ativo ou não
+			if (!instance_exists(obj_player_shield))
+				active_shield = false; // se meu escudo não exite, então eu posso ativar ele
+		#endregion
+		
+		#region controle de dano
+			// verificando se estou no cooldown e se estou com escudo ativo
+			if (damage_cooldown && !active_shield)
+			{
+				alarm_damage_cooldown--; // correndo alarme do cooldown
+			}
+			
+			// verificando alarme do cooldown
+			if (alarm_damage_cooldown <= 0)
+			{
+				// voltando a tomar dano 
+				damage_cooldown = false;
+				// resetando alarme
+				alarm_damage_cooldown = time_damage_cooldown;
+			}
+		#endregion
 	}
 	
 	// metodos de tiro do jogador
@@ -145,5 +193,21 @@ alarm_player_shoot = 0;
 	player_levelup = function()
 	{
 		select_shoot++;
+	}
+	
+	// variavel para perder vida e morrer
+	player_lose_life = function()
+	{
+		if damage_cooldown exit // se estou na espera de dano, eu não recebo dano algum
+		
+		current_player_life--; // perdendo vida
+		
+		// morrendo
+		if (current_player_life < 0)
+		{
+			instance_destroy() // me destruindo
+		}
+		
+		damage_cooldown = true; // ativando invencibilidade
 	}
 #endregion

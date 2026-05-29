@@ -5,9 +5,10 @@ vel_player_shoot = -10;
 	player_shoot_control = function()
 	{
 		// impedindo que o tiro se mantenha na memoria 
-		if (y <= -64)
+		var _outside_vroom = 0 -sprite_height/2
+		if (y <= _outside_vroom)
 		{
-			instance_destroy(); // mes destruindo ao sair da room
+			instance_destroy(id, false); // mes destruindo ao sair da room
 		}
 	}
 #endregion

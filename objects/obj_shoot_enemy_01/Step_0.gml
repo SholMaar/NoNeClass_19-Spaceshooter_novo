@@ -1,0 +1,1 @@
+enemy_01_shooting_control();

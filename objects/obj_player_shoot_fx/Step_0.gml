@@ -1,0 +1,1 @@
+destroy_shoot_fx();
