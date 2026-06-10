@@ -27,7 +27,7 @@ image_yscale = image_xscale;
 				if (image_speed < 0 && image_index <= 0)
 				{
 					// tocando som
-					audio_play_sound(snd_player_shild, 2, 0, 1, 0, .5);
+					play_sound(snd_player_shild, 3, , 1);
 					// me destruindo
 					instance_destroy();
 				}

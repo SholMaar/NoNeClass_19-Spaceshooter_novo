@@ -1,5 +1,5 @@
 // Inherit the parent event
 event_inherited();
 
-vel_shoot_enemy = 8;
-vspeed = vel_shoot_enemy;
+vel_shot = 5;
+speed_shot(8, .6);

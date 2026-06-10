@@ -1,0 +1,1 @@
+creat_particle(obj_enemy_explosion_fx);

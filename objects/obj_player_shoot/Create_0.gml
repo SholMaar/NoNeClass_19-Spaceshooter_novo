@@ -1,5 +1,5 @@
 // velocidade do tiro
-vel_player_shoot = 0;
+start_vel_shot(0);
 
 // iniciando minha escala com o dobro de tamanho
 image_xscale = 2.5;

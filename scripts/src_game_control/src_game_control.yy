@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"src_control",
+  "%Name":"src_game_control",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"src_control",
+  "name":"src_game_control",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

@@ -1,6 +1,6 @@
 #region variaveis
 	// velocidades
-	vel_shoot_enemy = 5;
+	start_vel_shot(5);
 	
 	// controle
 	load = false;
@@ -9,7 +9,7 @@
 if !load
 {
 	// aplicando velocidade vertical
-	vspeed = vel_shoot_enemy;
+	speed_shot(20, .4);
 }else
 {
 	vspeed = 0;

@@ -1,23 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_shoot01_enemy_03",
+  "%Name":"obj_game_control",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_shoot01_enemy_03",
+  "name":"obj_game_control",
   "overriddenProperties":[],
   "parent":{
-    "name":"03",
-    "path":"folders/Objects/Gameplay/Enemy/03.yy",
+    "name":"control",
+    "path":"folders/Objects/Gameplay/control.yy",
   },
-  "parentObjectId":{
-    "name":"obj_shoot_enemy_01",
-    "path":"objects/obj_shoot_enemy_01/obj_shoot_enemy_01.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -35,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_shoot01_enemy_03",
-    "path":"sprites/spr_shoot01_enemy_03/spr_shoot01_enemy_03.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.42362812,
+  "duration":0.18963718,
   "exportDir":"",
   "name":"snd_enemy_shoot",
   "parent":{

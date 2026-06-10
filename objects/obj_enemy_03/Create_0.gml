@@ -1,25 +1,30 @@
-// mudando vida do inimigo
-enemy_life = 10;
+#region variaveis
+	// mudando vida do inimigo
+	enemy_life = 10;
 
-// controle
-index_default_shoot		= 0;
-boolean_control			= false;
-stretch_and_squash_variable();
-blink_variable();
-time_blink_effect		= time_blink;
-shoot_sound				= snd_enemy03_shoot;
-shoot_sound02			= snd_enemy03_charge_shoot;
+	// controle
+	index_default_shoot		= 0;
+	boolean_control			= false;
+	time_blink_effect		= time_blink;
+	shoot_sound				= snd_enemy03_shoot;
+	shoot_sound02			= snd_enemy03_charge_shoot;
 
-// estado da maquina de estado
-state_machine = "advance"
-choose_state = noone;
+	// animações
+	stretch_and_squash_variable();
+	blink_variable();
+	start_end_animation_variables();
 
-// alarmes
-time_switch_state	= game_get_speed(gamespeed_fps) *2;
-alarm_switch_state	= time_switch_state;
+	// estado da maquina de estado
+	state_machine = "advance"
+	choose_state = noone;
 
-time_deafult_shoot	= game_get_speed(gamespeed_fps) /3;
-alarm_deafult_shoot	= time_deafult_shoot;
+	// alarmes
+	time_switch_state	= game_get_speed(gamespeed_fps) *2;
+	alarm_switch_state	= time_switch_state;
+
+	time_deafult_shoot	= game_get_speed(gamespeed_fps) /3;
+	alarm_deafult_shoot	= time_deafult_shoot;
+#endregion
 
 #region metodos
 	// troca de estados
@@ -84,9 +89,7 @@ alarm_deafult_shoot	= time_deafult_shoot;
 			else if (alarm_deafult_shoot <= 0 && index_default_shoot <3)
 			{
 				// tocando som
-				// verificando se tem algum outro audio do mesmo tipo
-				audio_stop_sound(shoot_sound);
-				audio_play_sound(shoot_sound, 2, 0, 2);
+				play_sound(shoot_sound, 2, , .5);
 				// criando tiro
 				var _default_shoot = instance_create_layer(x, y, "enemy_shoot", obj_shoot02_enemy_03);
 				_default_shoot.direction	= _player_direction;
@@ -109,9 +112,7 @@ alarm_deafult_shoot	= time_deafult_shoot;
 		if (!boolean_control)
 		{
 			// tocando som
-			// verificando se tem algum outro audio do mesmo tipo
-			audio_stop_sound(shoot_sound02);
-			audio_play_sound(shoot_sound02, 2, 0);
+			play_sound(shoot_sound02, 3, , 1.2);
 			// criando disparo
 			instance_create_layer(x, y, "enemy_shoot", obj_shoot01_enemy_03);
 			boolean_control = true;
@@ -144,6 +145,8 @@ alarm_deafult_shoot	= time_deafult_shoot;
 	// maquina de estados
 	state_machine_enemy03 = function()
 	{
+		// só faço meus estados se tiver player
+		if (!instance_exists(obj_player)) exit;
 		// usando switch 
 		switch state_machine
 		{			

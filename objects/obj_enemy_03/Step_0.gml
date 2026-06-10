@@ -6,3 +6,4 @@ if (enemy_life <= 0)
 	
 default_color();
 default_scale();
+animation_enemy_endgame();

@@ -12,9 +12,22 @@
 	{
 		damege	= 0;
 	}
+	
+	// velocidade de disparo
+	function start_vel_shot(_vel)
+	{
+		vel_shot = _vel;
+	}
 #endregion
 
 #region efeitos
+	// criar particula
+	function creat_particle(_particle)
+	{
+		if object_exists(_particle)
+			instance_create_layer(x, y, "particles", _particle);
+	}
+
 	#region stretch_and_squash
 		function stretch_and_squash(_x = 1.3, _y = 0.8)
 		{
@@ -91,4 +104,11 @@
 			}else return;
 		}
 	#endregion
+	
+	// velocidade do disparo
+	function speed_shot(_vel, _time) 
+	{
+		vel_shot = lerp(vel_shot, _vel, _time);	// animando velocidade do disparo
+		vspeed = vel_shot;
+	}
 #endregion

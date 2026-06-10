@@ -31,6 +31,9 @@
 	player_control = function()
 	{	
 		#region movimentação
+			// só vou me mover se eu não estiver em uma sequencia 
+			if in_sequence exit;
+			
 			// variaveis para pegar teclas do teclado
 			var _up, _down, _left, _right;
 			// atribuindo teclas
@@ -59,7 +62,6 @@
 				// me movendo de cordo com meu mouse
 				x = lerp(x, mouse_x, .1);
 				y = lerp(y, mouse_y, .1);
-				
 			}
 			
 			// evitando que o player saia da room
@@ -105,7 +107,7 @@
 				// resetando o alarme de disparo
 				alarm_player_shoot = time_player_shooting;
 				// som
-				audio_play_sound(snd_player_shot, 1, 0);
+				play_sound(, , , .3);
 			}
 		#endregion		
 		
@@ -127,7 +129,7 @@
 					// criando escudo
 					instance_create_layer(x, y, "player_shield", obj_player_shield);
 					// tocando som
-					audio_play_sound(snd_player_shild, 2, 0);
+					play_sound(snd_player_shild, 3);
 				}
 			}
 			
@@ -223,38 +225,27 @@
 	}
 	
 	// metodo para perder vida e morrer
-	player_lose_life = function()
+	player_lose_life = function(_damege =1)
 	{
 		if damage_cooldown exit // se estou na espera de dano, eu não recebo dano algum
 		
-		// tremendo tela
-		screenshack();
+		screenshack();	// tremendo tela
+		time_blink();	// iniciando piscada
 		
-		// iniciando piscada
-		time_blink();
-		
-		current_player_life--; // perdendo vida
-		// tocando som de perer vida
-		var _pitch = 1 *random_range(.8, 1.3);
-		audio_play_sound(snd_player_shot, 3, 0, 1, 0, _pitch);
+		current_player_life -=_damege;			// perdendo vida
+		play_sound(snd_player_shot, 4);	// tocando som de perer vida
 		
 		// morrendo
 		if (current_player_life < 0)
 		{
-			// criando animação
-			instance_create_layer(x, y, "particles", obj_player_explosion);
+			instance_create_layer(x, y, "particles", obj_player_explosion);	// criando animação
+			instance_destroy()	// me destruindo
 			
-			instance_destroy() // me destruindo
-			// parando minha música
-			audio_stop_sound(snd_music);
-			// tocando som de fim de jogo
-			audio_play_sound(snd_gameover, 3, 0);
+			audio_stop_sound(snd_music);	// parando minha música
+			play_sound(snd_gameover, 5);	// tocando som de fim de jogo
 		}
 		
 		damage_cooldown = true; // ativando invencibilidade
 	}
 	
 #endregion
-
-// criando sequencia de transição
-layer_sequence_create("transition", 0, 0, sq_transition_back);

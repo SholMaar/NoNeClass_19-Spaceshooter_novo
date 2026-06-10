@@ -3,22 +3,9 @@
 	// vidas atuais
 	global.player_current_life_gui		= 0;
 	global.player_current_shield_gui	= 0;
-	
-	// room
-	global.next_room					= rm_inicio;
-	
-	// transição
-	global.on_transition				= false;
 #endregion
 
 #region metodos
-	// criar particula
-	function creat_particle(_particle)
-	{
-		if object_exists(_particle)
-			instance_create_layer(x, y, "particles", _particle);
-	}
-	
 	// chance de criar drop
 	function drop_chance(_dice_number, _difficult, _drop)
 	{
@@ -31,6 +18,7 @@
 			instance_create_layer(x, y, "powerup", _drop);
 	}
 	
+	// função para tremer a tela
 	function screenshack(_force = 10)
 	{
 		// verificando se o objeto existe
@@ -48,14 +36,12 @@
 		}
 	}
 	
-	function switch_room()
+	// função para tocar sons no jogo
+	function play_sound(_snd=snd_player_shot, _prt=1, _loop=0, _gain=1, _pval01=.8, _pval02=1.3)
 	{
-		room_goto(global.next_room);
-		global.on_transition = true;
+		audio_stop_sound(_snd);									// impedindo de ter cacofonia
+		var _pitch = 1 *random_range(_pval01, _pval02);			// variação de pitch
+		audio_play_sound(_snd, _prt, _loop, _gain, 0, _pitch);	// tocando som
 	}
-	
-	function end_transition()
-	{
-		global.on_transition = false;	
-	}
+
 #endregion
