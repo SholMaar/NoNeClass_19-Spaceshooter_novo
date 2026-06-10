@@ -1,0 +1,1 @@
+blink(1, sh_red_shader);

@@ -1,5 +1,9 @@
 // velocidade do tiro
-vel_player_shoot = -10;
+vel_player_shoot = 0;
+
+// iniciando minha escala com o dobro de tamanho
+image_xscale = 2.5;
+image_yscale = 2.5;
 
 #region métodos
 	player_shoot_control = function()

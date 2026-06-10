@@ -26,8 +26,8 @@
   },
   "name":"sq_enemy_01_horde_01",
   "parent":{
-    "name":"Enemy hordes",
-    "path":"folders/Sequences/Enemy hordes.yy",
+    "name":"Enemy01 horde 01",
+    "path":"folders/Sequences/Enemy hordes/Enemy01 horde 01.yy",
   },
   "playback":0,
   "playbackSpeed":60.0,
@@ -64,7 +64,7 @@
                             {"th0":-0.025000006,"th1":0.05999999,"tv0":-0.21020508,"tv1":0.0,"x":0.6,"y":64.0,},
                             {"th0":-0.05999999,"th1":0.024999931,"tv0":0.0,"tv1":0.0,"x":0.9,"y":64.0,},
                             {"th0":-0.014359386,"th1":0.01100865,"tv0":-21.483591,"tv1":16.470436,"x":0.9499998,"y":163.84,},
-                            {"th0":-0.024999931,"th1":0.0,"tv0":-0.21020508,"tv1":0.0,"x":0.9999997,"y":192.0,},
+                            {"th0":-0.024999931,"th1":0.0,"tv0":-0.21020508,"tv1":0.0,"x":1.0,"y":192.0,},
                           ],"resourceType":"GMAnimCurveChannel","resourceVersion":"2.0","visible":true,},
                         {"$GMAnimCurveChannel":"","%Name":"y","colour":4281083598,"name":"y","points":[
                             {"th0":0.0,"th1":4.02936E-10,"tv0":0.0,"tv1":0.0,"x":0.0,"y":-255.99998,},
@@ -73,7 +73,7 @@
                             {"th0":-0.060000002,"th1":0.020000005,"tv0":0.0,"tv1":0.0,"x":0.5,"y":-64.0,},
                             {"th0":-0.020000005,"th1":0.05999999,"tv0":0.0,"tv1":0.0,"x":0.6,"y":-64.0,},
                             {"th0":-0.05999999,"th1":0.019999946,"tv0":0.0,"tv1":0.0,"x":0.9,"y":-64.0,},
-                            {"th0":-0.019999946,"th1":0.0,"tv0":0.0,"tv1":0.0,"x":0.9999997,"y":128.0,},
+                            {"th0":-0.019999946,"th1":0.0,"tv0":0.0,"tv1":0.0,"x":1.0,"y":128.0,},
                           ],"resourceType":"GMAnimCurveChannel","resourceVersion":"2.0","visible":true,},
                       ],"function":2,"name":"Position","resourceType":"GMAnimCurve","resourceVersion":"2.0",},"RealValue":0.0,"resourceType":"RealKeyframe","resourceVersion":"2.0",},
                   "1":{"$RealKeyframe":"","AnimCurveId":null,"EmbeddedAnimCurve":{"$GMAnimCurve":"","%Name":"Position","channels":[
@@ -86,7 +86,7 @@
                             {"th0":-0.025000006,"th1":0.05999999,"tv0":-0.21020508,"tv1":0.0,"x":0.6,"y":64.0,},
                             {"th0":-0.05999999,"th1":0.024999931,"tv0":0.0,"tv1":0.0,"x":0.9,"y":64.0,},
                             {"th0":-0.014359386,"th1":0.01100865,"tv0":-21.483591,"tv1":16.470436,"x":0.9499998,"y":163.84,},
-                            {"th0":-0.024999931,"th1":0.0,"tv0":-0.21020508,"tv1":0.0,"x":0.9999997,"y":192.0,},
+                            {"th0":-0.024999931,"th1":0.0,"tv0":-0.21020508,"tv1":0.0,"x":1.0,"y":192.0,},
                           ],"resourceType":"GMAnimCurveChannel","resourceVersion":"2.0","visible":true,},
                         {"$GMAnimCurveChannel":"","%Name":"y","colour":4281083598,"name":"y","points":[
                             {"th0":0.0,"th1":4.02936E-10,"tv0":0.0,"tv1":0.0,"x":0.0,"y":-255.99998,},
@@ -95,7 +95,7 @@
                             {"th0":-0.060000002,"th1":0.020000005,"tv0":0.0,"tv1":0.0,"x":0.5,"y":-64.0,},
                             {"th0":-0.020000005,"th1":0.05999999,"tv0":0.0,"tv1":0.0,"x":0.6,"y":-64.0,},
                             {"th0":-0.05999999,"th1":0.019999946,"tv0":0.0,"tv1":0.0,"x":0.9,"y":-64.0,},
-                            {"th0":-0.019999946,"th1":0.0,"tv0":0.0,"tv1":0.0,"x":0.9999997,"y":128.0,},
+                            {"th0":-0.019999946,"th1":0.0,"tv0":0.0,"tv1":0.0,"x":1.0,"y":128.0,},
                           ],"resourceType":"GMAnimCurveChannel","resourceVersion":"2.0","visible":true,},
                       ],"function":2,"name":"Position","resourceType":"GMAnimCurve","resourceVersion":"2.0",},"RealValue":0.0,"resourceType":"RealKeyframe","resourceVersion":"2.0",},
                 },"Disabled":false,"id":"c38fbd6f-3d88-49c3-9c8e-6b349357591d","IsCreationKey":false,"Key":0.0,"Length":300.0,"resourceType":"Keyframe<RealKeyframe>","resourceVersion":"2.0","Stretch":false,},

@@ -1,2 +1,1 @@
 control_shield();
-show_debug_message(image_index)

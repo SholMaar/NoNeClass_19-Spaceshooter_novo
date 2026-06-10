@@ -1,10 +1,19 @@
 #region variaveis
 	// velocidades
-	vel_shoot_enemy_01 = 5;
+	vel_shoot_enemy = 5;
+	
+	// controle
+	load = false;
 #endregion
 
-// aplicando velocidade vertical
-vspeed = vel_shoot_enemy_01;
+if !load
+{
+	// aplicando velocidade vertical
+	vspeed = vel_shoot_enemy;
+}else
+{
+	vspeed = 0;
+}
 
 #region metodos
 	// controle do tiro

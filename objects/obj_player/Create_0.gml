@@ -1,11 +1,13 @@
 #region variaveis
 	// velocidades
-	vel_player				= 4; // velocidade movimento
+	vel_player				= 5; // velocidade movimento
 	
 	// controles
 	select_shoot			= 01;
 	active_shield			= false;
 	damage_cooldown			= false;
+	stretch_and_squash_variable();
+	blink_variable();
 	
 	// vidas do jogador
 	max_player_life			= 3;
@@ -49,7 +51,17 @@
 			// horizontal
 			_velh_player = (_left -_right) *vel_player;
 			x -= _velh_player; 
-		
+			
+			// movimentação para mobile
+			var _mouse_press = mouse_check_button(mb_left);
+			if (_mouse_press)
+			{
+				// me movendo de cordo com meu mouse
+				x = lerp(x, mouse_x, .1);
+				y = lerp(y, mouse_y, .1);
+				
+			}
+			
 			// evitando que o player saia da room
 			// eixo x
 			var _min_clamp_x, _max_clamp_x;
@@ -88,9 +100,13 @@
 			// controlando o alarme para evitar spam
 			if alarm_player_shoot > 0
 				alarm_player_shoot--;
-			else if _shoot && alarm_player_shoot <= 0
+			else if _shoot && alarm_player_shoot <= 0 // atirando
+			{
 				// resetando o alarme de disparo
 				alarm_player_shoot = time_player_shooting;
+				// som
+				audio_play_sound(snd_player_shot, 1, 0);
+			}
 		#endregion		
 		
 		#region escudo
@@ -110,6 +126,8 @@
 					damage_cooldown = true; // isso impede ele de tomar qualquer dano
 					// criando escudo
 					instance_create_layer(x, y, "player_shield", obj_player_shield);
+					// tocando som
+					audio_play_sound(snd_player_shild, 2, 0);
 				}
 			}
 			
@@ -122,17 +140,26 @@
 			// verificando se estou no cooldown e se estou com escudo ativo
 			if (damage_cooldown && !active_shield)
 			{
+				// ficando meio transparente
+				image_alpha = .7;
 				alarm_damage_cooldown--; // correndo alarme do cooldown
 			}
 			
 			// verificando alarme do cooldown
 			if (alarm_damage_cooldown <= 0)
 			{
+				// vvoltando transparencia
+				image_alpha = 1;
 				// voltando a tomar dano 
 				damage_cooldown = false;
 				// resetando alarme
 				alarm_damage_cooldown = time_damage_cooldown;
 			}
+		#endregion
+		
+		#region padrão
+			default_scale();
+			default_color();
 		#endregion
 	}
 	
@@ -146,11 +173,12 @@
 			// atirando se eu apertei para atirar e meu alarme permitir
 			if _shoot && alarm_player_shoot <= 0
 			{
-				var _player_shoot = instance_create_layer(x, y, "player_shoot", obj_player_shoot);
-				//aplicando direção
-				// verificando se o tiro foi criado
-				if instance_exists(_player_shoot)
-				_player_shoot.vspeed = _player_shoot.vel_player_shoot;
+				// animação
+				stretch_and_squash();
+				
+				// criar tiro
+				var _y = y -sprite_height/2;
+				instance_create_layer(x, _y, "player_shoot", obj_player_shoot);
 			}
 		}
 		
@@ -162,20 +190,19 @@
 			// atirando se eu apertei para atirar e meu alarme permitir
 			if _shoot && alarm_player_shoot <= 0
 			{
+				// animação
+				stretch_and_squash();
+				
 				// variavel para guardar posição do tiro
 				var _pos_x_shoot = x -10;
+				var _y = y -sprite_height/2;
 				
 				// criando tiro
 				repeat(2) // repetindo esse código duas vezes
 				{
 					// criando um tiro na esquerda e outro na direita
-					var _player_shoot = instance_create_layer(_pos_x_shoot, y, "player_shoot", obj_player_shoot);
+					var _player_shoot = instance_create_layer(_pos_x_shoot, _y, "player_shoot", obj_player_shoot);
 					_pos_x_shoot = x +10; // mudando a posição x do meu tiro secundario
-					
-					//aplicando direção
-					// verificando se o tiro foi criado
-					if instance_exists(_player_shoot)
-					_player_shoot.vspeed = _player_shoot.vel_player_shoot;
 				}
 			}
 		}
@@ -195,19 +222,39 @@
 		select_shoot++;
 	}
 	
-	// variavel para perder vida e morrer
+	// metodo para perder vida e morrer
 	player_lose_life = function()
 	{
 		if damage_cooldown exit // se estou na espera de dano, eu não recebo dano algum
 		
+		// tremendo tela
+		screenshack();
+		
+		// iniciando piscada
+		time_blink();
+		
 		current_player_life--; // perdendo vida
+		// tocando som de perer vida
+		var _pitch = 1 *random_range(.8, 1.3);
+		audio_play_sound(snd_player_shot, 3, 0, 1, 0, _pitch);
 		
 		// morrendo
 		if (current_player_life < 0)
 		{
+			// criando animação
+			instance_create_layer(x, y, "particles", obj_player_explosion);
+			
 			instance_destroy() // me destruindo
+			// parando minha música
+			audio_stop_sound(snd_music);
+			// tocando som de fim de jogo
+			audio_play_sound(snd_gameover, 3, 0);
 		}
 		
 		damage_cooldown = true; // ativando invencibilidade
 	}
+	
 #endregion
+
+// criando sequencia de transição
+layer_sequence_create("transition", 0, 0, sq_transition_back);

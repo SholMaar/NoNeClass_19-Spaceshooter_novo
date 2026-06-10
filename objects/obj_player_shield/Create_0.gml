@@ -21,11 +21,13 @@ image_yscale = image_xscale;
 		#region tempo
 			// controle de tempo de atividde do escudo
 			if (alarm_active_shield <= 0)
-			{
+			{	
 				// voltando a animação para me destruir
 				image_speed = -.5;
 				if (image_speed < 0 && image_index <= 0)
 				{
+					// tocando som
+					audio_play_sound(snd_player_shild, 2, 0, 1, 0, .5);
 					// me destruindo
 					instance_destroy();
 				}
