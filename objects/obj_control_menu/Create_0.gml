@@ -46,6 +46,10 @@ control_menu = function()
 	_up		= keyboard_check_pressed(vk_up);
 	_down	= keyboard_check_pressed(vk_down);
 	
+	// som
+	if (_up || _down)
+		play_sound(snd_menu_select, 8, , .5, 1, 1);
+	
 	var _array_limit = array_length(array_menu)-1;
 	// funcionalidade
 	if _down && array_menu_indice == _array_limit
@@ -72,18 +76,19 @@ control_menu = function()
 	
 	// funcionalidade dos botões
 	var _select = keyboard_check_pressed(vk_enter);
-	if (_select)
+	if (_select && !global.on_transition)
 	{
+		// som
+		play_sound(snd_menu_confirm, 8, , .5, 1, 1);
+		
 		// vericando qual botão está selecionado
 		switch array_menu_indice
 		{
 			case 0:	// Jogar
-			{
-				// iniciando transição
-				layer_sequence_create("transition", 0, 0, sq_transition);
-				// definindo destino
-				global.next_room = rm_gameplay;
-				global.on_transition = true;
+			{ 
+				layer_sequence_create("transition", 0, 0, sq_transition);	// iniciando transição
+				global.next_room		= rm_gameplay; 						// definindo destino
+				global.on_transition	= true;
 			} break;
 			case 1:	// Tutorial
 			{

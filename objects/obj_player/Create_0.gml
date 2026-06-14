@@ -1,29 +1,31 @@
 #region variaveis
 	// velocidades
-	vel_player				= 5; // velocidade movimento
+		vel_player				= 5; // velocidade movimento
 	
 	// controles
-	select_shoot			= 01;
-	active_shield			= false;
-	damage_cooldown			= false;
-	stretch_and_squash_variable();
-	blink_variable();
+		select_shot				= 01;
+		active_shield			= false;
+		damage_cooldown			= false;
+	
+	//  efeitos
+		stretch_and_squash_variable();
+		blink_variable();
 	
 	// vidas do jogador
-	max_player_life			= 3;
-	current_player_life		= max_player_life;
+		max_player_life			= 3;
+		current_player_life		= max_player_life;
+	
 	// escudos do jogador
-	max_player_shield		= 3;
-	current_player_shield	= max_player_shield;
-#endregion
-
-#region alarmes
-	// alarme para intervalos no disparo
-	time_player_shooting	= game_get_speed(gamespeed_fps) /5; // intervalo de disparo
-	alarm_player_shoot		= 0;
-	// alarme para cooldown
-	time_damage_cooldown	= game_get_speed(gamespeed_fps) *3;
-	alarm_damage_cooldown	= time_damage_cooldown;
+		max_player_shield		= 3;
+		current_player_shield	= max_player_shield;
+		
+	// alarmes 
+		// intervalos no disparo
+			time_player_shoting		= game_get_speed(gamespeed_fps) *.2; // intervalo de disparo
+			alarm_player_shot		= 0;
+		// alarme para cooldown
+			time_damage_cooldown	= game_get_speed(gamespeed_fps) *3;
+			alarm_damage_cooldown	= time_damage_cooldown;
 #endregion
 
 #region métodos
@@ -79,33 +81,33 @@
 		
 		#region atirar
 			// variavel tecla de tiro
-			var _shoot = keyboard_check(vk_space) || mouse_check_button(mb_left);
+			var _shot = keyboard_check(vk_space) || mouse_check_button(mb_left);
 			
 			// selecionando tiro atual
-			switch(select_shoot)
+			switch(select_shot)
 			{
 				case 01: // level 1 de tiro
-					player_shoot_level01();
+					player_shot_level01();
 				break;
 				case 02: // level 2 do tiro
-					player_shoot_level02();
+					player_shot_level02();
 				break;
 				case 03: // level 03 de tiro
-					player_shoot_level03();
+					player_shot_level03();
 				break;
 				
 				default: // caso não encontre valor correto
-					player_shoot_level01(); // eu volto para o tiro 1
+					player_shot_level01(); // eu volto para o tiro 1
 				break;
 			}
 			
 			// controlando o alarme para evitar spam
-			if alarm_player_shoot > 0
-				alarm_player_shoot--;
-			else if _shoot && alarm_player_shoot <= 0 // atirando
+			if alarm_player_shot > 0
+				alarm_player_shot--;
+			else if _shot && alarm_player_shot <= 0 // atirando
 			{
 				// resetando o alarme de disparo
-				alarm_player_shoot = time_player_shooting;
+				alarm_player_shot = time_player_shoting;
 				// som
 				play_sound(, , , .3);
 			}
@@ -168,60 +170,60 @@
 	// metodos de tiro do jogador
 	#region leveis de tiro
 		// tiro de level 01
-		player_shoot_level01 = function()
+		player_shot_level01 = function()
 		{
 			// tecla de atirar
-			var _shoot = keyboard_check(vk_space) || mouse_check_button(mb_left);
+			var _shot = keyboard_check(vk_space) || mouse_check_button(mb_left);
 			// atirando se eu apertei para atirar e meu alarme permitir
-			if _shoot && alarm_player_shoot <= 0
+			if _shot && alarm_player_shot <= 0
 			{
 				// animação
 				stretch_and_squash();
 				
 				// criar tiro
 				var _y = y -sprite_height/2;
-				instance_create_layer(x, _y, "player_shoot", obj_player_shoot);
+				instance_create_layer(x, _y, "player_shot", obj_player_shot);
 			}
 		}
 		
 		// tieo de level 02
-		player_shoot_level02 = function()
+		player_shot_level02 = function()
 		{
 			// tecla de atirar
-			var _shoot = keyboard_check(vk_space) || mouse_check_button(mb_left);
+			var _shot = keyboard_check(vk_space) || mouse_check_button(mb_left);
 			// atirando se eu apertei para atirar e meu alarme permitir
-			if _shoot && alarm_player_shoot <= 0
+			if _shot && alarm_player_shot <= 0
 			{
 				// animação
 				stretch_and_squash();
 				
 				// variavel para guardar posição do tiro
-				var _pos_x_shoot = x -10;
+				var _pos_x_shot = x -10;
 				var _y = y -sprite_height/2;
 				
 				// criando tiro
 				repeat(2) // repetindo esse código duas vezes
 				{
 					// criando um tiro na esquerda e outro na direita
-					var _player_shoot = instance_create_layer(_pos_x_shoot, _y, "player_shoot", obj_player_shoot);
-					_pos_x_shoot = x +10; // mudando a posição x do meu tiro secundario
+					var _player_shot = instance_create_layer(_pos_x_shot, _y, "player_shot", obj_player_shot);
+					_pos_x_shot = x +10; // mudando a posição x do meu tiro secundario
 				}
 			}
 		}
 		
 		// tiro de level 03
-		player_shoot_level03 = function()
+		player_shot_level03 = function()
 		{
 			// criando o tiro e o tiro 1 e 2 ao mesmo tempo
-			player_shoot_level01();
-			player_shoot_level02();
+			player_shot_level01();
+			player_shot_level02();
 		}
 	#endregion
 	
 	// metodo para ganhar level
 	player_levelup = function()
 	{
-		select_shoot++;
+		select_shot++;
 	}
 	
 	// metodo para perder vida e morrer

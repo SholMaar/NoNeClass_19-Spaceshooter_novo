@@ -26,5 +26,10 @@
 			instance_destroy(id, false);		//  me destruindo
 	}
 	
-	// animação de velocidade do disparo
+	// criar inimigo 3
+	function creat_enemy03()
+	{
+		if (instance_exists(obj_enemy03)) exit;							// só posso riar um
+		instance_create_layer(room_width/2, -128, "enemy", obj_enemy03);	// criando inimigo 3
+	}
 #endregion
