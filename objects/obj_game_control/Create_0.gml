@@ -1,4 +1,7 @@
 #region variaveis
+	// fim de jogo
+		time_endgame	= game_get_speed(gamespeed_fps) *3;
+		alarm_endgame	= time_endgame;
 #endregion
 
 #region metodos

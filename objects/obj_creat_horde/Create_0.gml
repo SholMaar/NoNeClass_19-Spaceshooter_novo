@@ -1,6 +1,8 @@
 #region variaveis
 	// vetores
-		enemy_01_horde_array = [sq_horde01, sq_horde02, sq_horde03, sq_horde04, sq_horde05, sq_horde06, sq_horde07, sq_horde08, sq_horde09];
+		enemy_01_horde_array = [sq_horde01, sq_horde02, sq_horde03, sq_horde04, 
+		sq_horde05, sq_horde06, sq_horde07, sq_horde08, sq_horde09, sq_horde_loop01,
+		sq_horde_loop02, sq_horde_loop03, sq_horde_loop04];
 	
 	// controle
 		index_horde = 0;

@@ -26,6 +26,7 @@
 		// alarme para cooldown
 			time_damage_cooldown	= game_get_speed(gamespeed_fps) *3;
 			alarm_damage_cooldown	= time_damage_cooldown;
+
 #endregion
 
 #region métodos
@@ -223,6 +224,7 @@
 	// metodo para ganhar level
 	player_levelup = function()
 	{
+		if select_shot >= 3 exit;
 		select_shot++;
 	}
 	
