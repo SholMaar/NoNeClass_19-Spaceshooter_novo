@@ -12,7 +12,7 @@
 	powerup_settings = function()
 	{
 		#region movimentação
-			vspeed = vel_powerup // fazendo ele descer
+			y += vel_powerup // fazendo ele descer
 			
 			var _outide_down_room = room_height +sprite_height;
 			if (y > _outide_down_room)	// se sair por baixo da room

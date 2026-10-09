@@ -1,21 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_enemy02_shot",
+  "%Name":"obj_trail",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_enemy02_shot",
+  "name":"obj_trail",
   "overriddenProperties":[],
   "parent":{
-    "name":"02",
-    "path":"folders/Objects/Gameplay/Enemy/02.yy",
+    "name":"Trial",
+    "path":"folders/Shol_Effects/Trial.yy",
   },
-  "parentObjectId":{
-    "name":"obj_enemy01_shot",
-    "path":"objects/obj_enemy01_shot/obj_enemy01_shot.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_enemy02_shot",
-    "path":"sprites/spr_enemy02_shot/spr_enemy02_shot.yy",
+    "name":"spr_player_shoot",
+    "path":"sprites/spr_player_shoot/spr_player_shoot.yy",
   },
   "spriteMaskId":null,
   "visible":true,

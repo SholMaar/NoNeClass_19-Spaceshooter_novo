@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"src_hitstop",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"src_hitstop",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Shol_Effects/HitStop/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

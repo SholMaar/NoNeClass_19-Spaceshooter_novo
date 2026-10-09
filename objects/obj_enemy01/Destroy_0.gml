@@ -9,4 +9,3 @@ play_sound(snd_enemy_down, 2, , .4, .4);
 
 // tremendo a tela
 screenshack(7);
-

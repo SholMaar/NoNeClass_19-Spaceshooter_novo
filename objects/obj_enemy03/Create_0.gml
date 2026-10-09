@@ -7,6 +7,13 @@
 		boolean_control			= false;
 		shot_sound				= snd_enemy03_shot;
 		shot_sound02			= snd_enemy03_charge_shot;
+		dir						= choose(45, 135, 225, 270);
+
+	// velocidades
+		velv_enemy03	= 3;
+		velh_enemy03	= 0;
+		vel_enemy03		= 3;
+	
 
 	// efeitos
 		blink_variable();					// variaveis para piscar
@@ -15,7 +22,7 @@
 		start_end_animation_variables();	// variaveis para animação de encerramento
 
 	// estado da maquina de estado
-	state_machine = "advance"
+	state_machine = "leavy"
 	choose_state = noone;
 
 	// alarmes
@@ -50,21 +57,18 @@
 	case_stopped = function()
 	{
 		// zerando todas as minhas velocidades 
-		vspeed	= 0;
-		hspeed	= 0;
-		speed	= 0;
+		velv_enemy03	= 0;
+		velh_enemy03	= 0;
+		vel_enemy03		= 0;
 	}
 
 	case_advance = function()
 	{
 		// avançando para dentro da room
-		var _outside_vroom	= 0 +sprite_height/2;
 		var _destiny		= room_height/6;
 				
-		if (y < _outside_vroom)
-			vspeed = 3;	// aumentando minha velocidade vertical
-		else if (y >= _destiny)
-			vspeed = 0; // zero minha velocidade
+		if (y < _destiny )
+			y += velv_enemy03;	// aumentando minha velocidade vertical
 	}
 
 	case_advance_direction = function(_direction)
@@ -126,13 +130,13 @@
 			switch_state();
 	}
 	
-	case_leavy = function()
+	case_leavy = function(_dir)
 	{
 		// escolhendo uma direção uma única vez
 		if (!boolean_control)
 		{
-			hspeed  = choose(-1, 1)*5;
-			boolean_control = true;
+			x += lengthdir_x(vel_enemy03, _dir); 
+			y += lengthdir_y(vel_enemy03, _dir); 
 		}
 				
 		// me destruindo ao sair da room
@@ -192,7 +196,7 @@
 			break;
 			
 			case "leavy":
-				case_leavy();
+				case_leavy(dir);
 			break;
 		}
 	}

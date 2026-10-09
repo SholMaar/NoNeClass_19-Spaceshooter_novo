@@ -1,3 +1,5 @@
+if global.hitstop exit; // executanfo hitstop
+
 // atirar
 enemy01_shot(obj_enemy01_shot);
 
@@ -13,3 +15,5 @@ else if (creat_in_sequence && !in_sequence)
 	default_scale();			// resetando efeitos
 	default_color();			// resetando cor
 #endregion
+
+

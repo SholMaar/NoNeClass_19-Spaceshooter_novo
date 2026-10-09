@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_damege_flash",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_damege_flash",
+  "parent":{
+    "name":"scr",
+    "path":"folders/Shol_Effects/Damage_flash/scr.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

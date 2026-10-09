@@ -1,3 +1,5 @@
+if global.hitstop exit; // executanfo hitstop
+
 player_shot_control(); // controles do tiro
 
 // animação
@@ -6,3 +8,6 @@ player_shot_control(); // controles do tiro
 
 	speed_shot(-20, .3);
 	
+
+// criando rastro
+instance_create_depth(x, y, depth, obj_trail);

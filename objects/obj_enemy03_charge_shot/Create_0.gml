@@ -1,3 +1,4 @@
 // carregando tiro
 event_inherited();
-load = true;
+
+load = 1;

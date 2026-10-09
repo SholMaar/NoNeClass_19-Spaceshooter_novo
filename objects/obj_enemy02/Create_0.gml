@@ -41,6 +41,7 @@
 					var _instance_shot = instance_create_layer(x, y, "enemy_shot", _shot);	// criando tiro
 					_instance_shot.direction	= _direction;		// arrumando direção do disparo				
 					_instance_shot.image_angle	= _direction +90;	// arrumando angulo do disparo
+
 					_direction += 15; // aumentando o angulo de disparo
 				}
 				_direction = 255; // resetando a variavel de direção

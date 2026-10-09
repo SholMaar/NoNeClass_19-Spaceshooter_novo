@@ -1,3 +1,5 @@
+if global.hitstop exit; // executanfo hitstop
+
 #region chamada de metodos
 	enemy02_shot(obj_enemy02_shot, 2, 3);
 #endregion

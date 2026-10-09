@@ -109,6 +109,6 @@
 	function speed_shot(_vel, _time) 
 	{
 		vel_shot = lerp(vel_shot, _vel, _time);	// animando velocidade do disparo
-		vspeed = vel_shot;
+		y += vel_shot;
 	}
 #endregion

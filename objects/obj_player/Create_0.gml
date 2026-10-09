@@ -6,6 +6,7 @@
 		select_shot				= 01;
 		active_shield			= false;
 		damage_cooldown			= false;
+		iframes					= false;
 	
 	//  efeitos
 		stretch_and_squash_variable();
@@ -150,6 +151,11 @@
 				alarm_damage_cooldown--; // correndo alarme do cooldown
 			}
 			
+			if damage_cooldown
+				iframes = !iframes;
+			else
+				iframes = false;
+			
 			// verificando alarme do cooldown
 			if (alarm_damage_cooldown <= 0)
 			{
@@ -181,9 +187,12 @@
 				// animação
 				stretch_and_squash();
 				
+				var _range = 7;
+				var _shot_variation = random_range(-_range, _range); 
+				
 				// criar tiro
 				var _y = y -sprite_height/2;
-				instance_create_layer(x, _y, "player_shot", obj_player_shot);
+				instance_create_layer(x +_shot_variation, _y, "player_shot", obj_player_shot);
 			}
 		}
 		
@@ -198,8 +207,11 @@
 				// animação
 				stretch_and_squash();
 				
+				var _range = 7;
+				var _shot_variation = random_range(_range, -_range); 
+				
 				// variavel para guardar posição do tiro
-				var _pos_x_shot = x -10;
+				var _pos_x_shot = x +_shot_variation -10;
 				var _y = y -sprite_height/2;
 				
 				// criando tiro
@@ -207,7 +219,7 @@
 				{
 					// criando um tiro na esquerda e outro na direita
 					var _player_shot = instance_create_layer(_pos_x_shot, _y, "player_shot", obj_player_shot);
-					_pos_x_shot = x +10; // mudando a posição x do meu tiro secundario
+					_pos_x_shot = x+_shot_variation +10; // mudando a posição x do meu tiro secundario
 				}
 			}
 		}
@@ -235,9 +247,13 @@
 		
 		screenshack();	// tremendo tela
 		time_blink();	// iniciando piscada
+		activated_flash() // hit flash
 		
 		current_player_life -=_damege;			// perdendo vida
 		play_sound(snd_player_shot, 4);	// tocando som de perer vida
+		
+		// ativando hitstop
+		activate_hitstop();
 		
 		// morrendo
 		if (current_player_life < 0)

@@ -1,3 +1,5 @@
+if global.hitstop exit; // executanfo hitstop
+
 // chamando meu metodo de movimentação 
 player_control();
 
